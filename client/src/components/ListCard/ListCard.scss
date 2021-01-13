@@ -1,0 +1,42 @@
+@import '../../utilities/colors';
+
+.list-card {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+    * {
+      color: $yellow;
+    }
+  }
+
+  figure {
+    display: inline-block;
+    flex: 0 0 6rem;
+    height: 6rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  aside {
+    margin-left: 1rem;
+
+    h3 {
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+    }
+
+    p {
+      margin: 0.2rem 0 0.5rem;
+    }
+  }
+}

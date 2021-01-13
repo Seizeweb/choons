@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+// imports
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+@import './utilities/_colors.scss';
+
+// CSS Reset
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: $yellow;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+// Custom styles
+
+body {
+  color: $green;
+  font-family: 'Roboto Mono', sans-serif;
+  padding: 4rem 2.5rem;
+  font-weight: 400;
 }
 
-.App-link {
-  color: #61dafb;
+.btn {
+  border: 3px solid $green;
+  border-radius: 5px;
+  padding: 0.4rem 1rem;
+
+  &:hover {
+    background-color: $green;
+    color: $white;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.is-regular {
+  font-weight: 400;
+}
+.is-bold {
+  font-weight: 700;
+}
+
+.m0 {
+  margin: 0;
+}
+
+.p0 {
+  padding: 0;
+}
+
+section {
+  margin: 2rem 0;
 }
