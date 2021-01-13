@@ -31,9 +31,9 @@ const List = mongoose.model('List', listSchema);
 const releaseSchema = new mongoose.Schema({
   tracks: Array,
   artist: Array,
+  title: String,
   url: String,
   imageUrl: String,
-  duration: String,
 });
 
 const Release = mongoose.model('Release', releaseSchema);
