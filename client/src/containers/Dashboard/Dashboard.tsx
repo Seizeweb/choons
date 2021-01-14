@@ -6,18 +6,17 @@ import './Dashboard.scss';
 export interface DashboardProps {}
 
 const Dashboard: React.FC<DashboardProps> = () => {
-  const showList = () => {};
+  // FOLLOWING BIT FOR TESTING PURPOSES (checking out the api service)
+  // useEffect(() => {
+  //   const url = 'https://physicallysick3.bandcamp.com/album/physically-sick-3';
 
-  useEffect(() => {
-    const url = 'https://physicallysick3.bandcamp.com/album/physically-sick-3';
+  //   const fetchRelease = async () => {
+  //     const release = await pullRelease(url);
+  //     console.log(release);
+  //   };
 
-    const fetchRelease = async () => {
-      const release = await pullRelease(url);
-      console.log(release);
-    };
-
-    fetchRelease();
-  }, []);
+  //   fetchRelease();
+  // }, []);
 
   return (
     <section>

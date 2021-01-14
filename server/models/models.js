@@ -17,20 +17,21 @@ const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
+  lists: [String],
 });
 
 const User = mongoose.model('User', userSchema);
 
 const listSchema = new mongoose.Schema({
-  releasesLink: Array,
+  releasesLink: [String],
   lastUpdated: Date,
 });
 
 const List = mongoose.model('List', listSchema);
 
 const releaseSchema = new mongoose.Schema({
-  tracks: Array,
-  artist: Array,
+  tracks: [],
+  artist: String,
   title: String,
   url: String,
   imageUrl: String,
