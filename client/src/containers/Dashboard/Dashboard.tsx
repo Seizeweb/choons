@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { pullRelease } from '../../apiService';
+import { useState, useEffect } from 'react';
+import { listUserLists } from '../../apiService';
+import { List } from '../../interfaces';
 import ListCard from '../../components/ListCard/ListCard';
 import './Dashboard.scss';
 
@@ -18,19 +19,31 @@ const Dashboard: React.FC<DashboardProps> = () => {
   //   fetchRelease();
   // }, []);
 
+  const [lists, setLists] = useState<List[]>([]);
+
+  useEffect(() => {
+    const fetchRelease = async () => {
+      const fetchedLists = await listUserLists();
+      setLists(fetchedLists);
+    };
+
+    fetchRelease();
+  }, []);
+
   return (
     <section>
       <h2>Wishlists</h2>
       <ul className='list-cards-wrapper'>
-        <ListCard listId='someid1' />
-        <ListCard listId='someid2' />
-        <ListCard listId='someid3' />
-        <ListCard listId='someid4' />
-        <ListCard listId='someid5' />
-        <ListCard listId='someid6' />
-        <ListCard listId='someid7' />
-        <ListCard listId='someid8' />
-        <ListCard listId='someid9' />
+        {lists.map((list) => (
+          <ListCard
+            listId={list._id}
+            key={list._id}
+            name={list.name}
+            lastUpdated={list.lastUpdated}
+            numberOfReleases={list.releases.length}
+            lastReleasesArtwork={list.lastReleasesArtwork}
+          />
+        ))}
       </ul>
     </section>
   );

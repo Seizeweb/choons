@@ -1,13 +1,23 @@
+export interface List {
+  _id: string;
+  name: string;
+  releases: Release[];
+  lastUpdated: Date;
+  owner: string;
+  lastReleasesArtwork: string;
+}
+
 export interface Release {
+  _id: string;
   tracks: Track[];
-  artist: String;
-  title: String;
-  url: String;
-  imageUrl: String;
+  artist: string;
+  title: string;
+  url: string;
+  imageUrl: string;
 }
 
 export interface Track {
-  name: String;
-  url: String;
-  duration: String;
+  name: string;
+  url: string;
+  duration: string;
 }

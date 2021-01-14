@@ -1,19 +1,27 @@
 import './ListCard.scss';
 
 export interface ListCardProps {
-  listId: String;
+  listId: string;
+  name: string;
+  lastUpdated: Date;
+  numberOfReleases: number;
+  lastReleasesArtwork: string;
 }
 
-const ListCard: React.FC<ListCardProps> = ({ listId }) => {
+const ListCard: React.FC<ListCardProps> = ({ name, lastUpdated, numberOfReleases, lastReleasesArtwork }) => {
   return (
     <li className='list-card'>
       <figure>
-        <img src='https://f4.bcbits.com/img/a3764976661_16.jpg' alt='last release cover' />
+        {lastReleasesArtwork ? (
+          <img src={lastReleasesArtwork} alt='last release cover' />
+        ) : (
+          <img src='/assets/no-releases-artwork.png' alt='no releases' />
+        )}
       </figure>
       <aside className='list-infos'>
-        <h3 className='is-bold'>The mega choons of 2020</h3>
-        <p>15 releases</p>
-        <small>Last updated on 12/20</small>
+        <h3 className='is-bold'>{name}</h3>
+        <p>{numberOfReleases} releases</p>
+        <small>Last updated on {lastUpdated}</small>
       </aside>
     </li>
   );
