@@ -27,6 +27,7 @@ const listSchema = new mongoose.Schema({
       ref: 'Release',
     },
   ],
+  lastReleasesArtwork: { type: String, default: '' },
   lastUpdated: { type: Date, default: Date.now() },
   owner: String,
 });
