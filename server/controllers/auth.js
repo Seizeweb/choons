@@ -8,9 +8,7 @@ const createUser = async (ctx) => {
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      // TODO res.send that the user exists
       ctx.body = 'User already exists';
-      console.log('user already exists');
     } else {
       const hash = bcrypt.hashSync(password, 10);
       const user = new User({

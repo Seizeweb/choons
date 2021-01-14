@@ -42,12 +42,15 @@ const pullRelease = async (ctx) => {
 };
 
 const getUserLists = async (ctx) => {
-  ctx.body = 'Get User lists';
+  const { userId } = ctx.request.body;
+  const lists = await List.find({ owner: userId });
+  ctx.body = lists;
 };
 
 const getListReleases = async (ctx) => {
   const listId = ctx.params.id;
-  ctx.body = `Get releases for list ${listId}`;
+  const list = await List.findOne({ _id: listId }).populate('releases');
+  ctx.body = list.releases;
 };
 
 const deleteReleaseFromList = async (ctx) => {
@@ -57,14 +60,38 @@ const deleteReleaseFromList = async (ctx) => {
 };
 
 const addReleaseToList = async (ctx) => {
-  const listId = ctx.params.listId;
-  const releaseId = ctx.params.releaseId;
-  ctx.body = `add release ${releaseId} to list ${listId}`;
+  const { listId, releaseId } = ctx.params;
+
+  const list = await List.findOne({ _id: listId });
+  const alreadyInList = list.releases.indexOf(releaseId) !== -1;
+
+  if (alreadyInList) {
+    console.log('This release is already in the list');
+    return (ctx.body = 'This release is already in the list');
+  }
+
+  list.releases = [...list.releases, releaseId];
+  await list.save();
+  console.log(list);
+  ctx.body = list;
 };
 
 const deleteList = async (ctx) => {
   const listId = ctx.params.id;
   ctx.body = `delete list ${listId}`;
+};
+
+const createList = async (ctx) => {
+  const { name, userId } = ctx.request.body;
+  const existingList = await List.findOne({ name });
+
+  if (existingList) {
+    ctx.body = `You already created a list with the name ${existingList.name}`;
+  } else {
+    const list = new List({ name, owner: userId });
+    await list.save();
+    ctx.body = `created list ${list.name} for user ${list.owner}`;
+  }
 };
 
 module.exports = {
@@ -74,4 +101,5 @@ module.exports = {
   deleteReleaseFromList,
   addReleaseToList,
   deleteList,
+  createList,
 };

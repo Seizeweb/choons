@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt');
-
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/choons', {
   useNewUrlParser: true,
@@ -17,14 +15,20 @@ const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
-  lists: [String],
 });
 
 const User = mongoose.model('User', userSchema);
 
 const listSchema = new mongoose.Schema({
-  releasesLink: [String],
-  lastUpdated: Date,
+  name: String,
+  releases: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Release',
+    },
+  ],
+  lastUpdated: { type: Date, default: Date.now() },
+  owner: String,
 });
 
 const List = mongoose.model('List', listSchema);
