@@ -7,13 +7,13 @@ export interface Location {
 export interface ListInterface {
   _id: string;
   name: string;
-  releases: Release[];
+  releases: ReleaseInterface[];
   lastUpdated: Date;
   owner: string;
   lastReleasesArtwork: string;
 }
 
-export interface Release {
+export interface ReleaseInterface {
   _id: string;
   tracks: Track[];
   artist: string;

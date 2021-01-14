@@ -10,12 +10,12 @@ const Dashboard: React.FC<DashboardProps> = () => {
   const [lists, setLists] = useState<ListInterface[]>([]);
 
   useEffect(() => {
-    const fetchRelease = async () => {
+    const fetchLists = async () => {
       const fetchedLists = await listUserLists();
       setLists(fetchedLists);
     };
 
-    fetchRelease();
+    fetchLists();
   }, []);
 
   return (
