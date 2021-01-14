@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { listUserLists, getListReleases } from '../../apiService';
+import { getListReleases } from '../../apiService';
 import { Location, ListInterface, ReleaseInterface } from '../../interfaces';
 import Release from '../Release/Release';
 import './List.scss';
@@ -19,16 +19,20 @@ const List: React.FC<ListProps> = () => {
     };
 
     fetchReleases();
-  }, []);
+  }, [list._id]);
 
   return (
     <section className='list'>
       <div className='left'>
-        <h1>{list.name}</h1>
+        <div className='list-info-wrapper'>
+          <h1 className='is-bold'>{list.name}</h1>
+          <button className='btn'>add all to cart</button>
+          <button className='btn ml-1'>play all</button>
+        </div>
       </div>
       <div className='right'>
         <ul>
-          {releases.map((release) => (
+          {[...releases].reverse().map((release) => (
             <Release release={release} key={release._id} />
           ))}
         </ul>

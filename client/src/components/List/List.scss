@@ -1,0 +1,63 @@
+@import '../../utilities/colors';
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  width: 40%;
+
+  .list-info-wrapper {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 6rem;
+  }
+
+  h1 {
+    font-size: 5rem;
+    border-bottom: 10px solid $green;
+    margin-bottom: 3rem;
+  }
+}
+
+.right {
+  width: 60%;
+}
+
+.release {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+  &:hover {
+    cursor: pointer;
+    * {
+      color: $yellow;
+    }
+
+    figure:after {
+      content: 'PLAY';
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 50%;
+      width: 50%;
+      transform: translate(-50%, -50%);
+      background: $white;
+      padding: 1rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+  }
+  figure {
+    width: 10rem;
+    height: 10rem;
+    margin-right: 1rem;
+    position: relative;
+  }
+}

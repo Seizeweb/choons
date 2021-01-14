@@ -18,8 +18,19 @@ const pullRelease = async (ctx) => {
     const url = scrapedRelease.url;
 
     const writeReleaseProperties = (target) => {
-      target.tracks = scrapedRelease.tracks;
-      target.artist = scrapedRelease.artist;
+      target.itemType = scrapedRelease.item_type;
+      if (scrapedRelease.raw.item_type === 'track') {
+        target.tracks = [
+          {
+            name: scrapedRelease.title,
+            url: scrapedRelease.url,
+            duration: new Date(scrapedRelease.raw.trackinfo[0].duration * 1000).toISOString().substr(14, 5),
+          },
+        ];
+      } else {
+        target.tracks = scrapedRelease.tracks;
+      }
+      target.artist = scrapedRelease.raw.artist;
       target.title = scrapedRelease.title;
       target.url = scrapedRelease.url;
       target.imageUrl = scrapedRelease.imageUrl;

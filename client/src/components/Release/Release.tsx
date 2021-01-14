@@ -7,13 +7,16 @@ export interface ReleaseProps {
 const Release: React.FC<ReleaseProps> = ({ release }) => {
   const { imageUrl, tracks, artist, title } = release;
   return (
-    <li>
+    <li className='release'>
       <figure>
         <img src={imageUrl} alt={title} />
       </figure>
       <aside>
-        <h2>{title}</h2>
-        <h3>By: {artist}</h3>
+        <h2 className='is-bold'>{title}</h2>
+        <h3>
+          By:
+          <span className='is-bold'> {artist}</span>
+        </h3>
         <small>{tracks.length} tracks</small>
       </aside>
     </li>

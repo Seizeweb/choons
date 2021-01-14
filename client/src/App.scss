@@ -50,6 +50,18 @@ a {
   }
 }
 
+figure {
+  margin: 0;
+}
+
+button {
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+}
+
 // Custom styles
 
 body {
@@ -67,6 +79,7 @@ body {
   &:hover {
     background-color: $green;
     color: $white;
+    cursor: pointer;
   }
 }
 
@@ -79,6 +92,14 @@ body {
 
 .m0 {
   margin: 0;
+}
+
+.ml-1 {
+  margin-left: 1rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
 }
 
 .p0 {

@@ -40,6 +40,7 @@ const releaseSchema = new mongoose.Schema({
   title: String,
   url: String,
   imageUrl: String,
+  itemType: String,
 });
 
 const Release = mongoose.model('Release', releaseSchema);
