@@ -8,18 +8,34 @@
 .left {
   width: 40%;
 
-  .list-info-wrapper {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 6rem;
-  }
-
   h1 {
     font-size: 5rem;
     border-bottom: 10px solid $green;
     margin-bottom: 3rem;
     line-height: 0.9em;
     padding-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+
+    input {
+      border: 3px solid $green;
+      font-family: inherit;
+      color: inherit;
+      border-radius: 5px 0 0 5px;
+      height: 2.5rem;
+      flex-grow: 1;
+      padding: 0 1rem;
+    }
+
+    button {
+      height: 2.5rem;
+      border-radius: 0 5px 5px 0;
+      background: $green;
+      color: #fff;
+      padding: 0.5rem 1rem;
+    }
   }
 }
 
@@ -61,5 +77,36 @@
     height: 10rem;
     margin-right: 1rem;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.pulled-release {
+  padding-right: 1rem;
+  font-size: 1rem;
+  background: rgba($green, 0.2);
+  padding: 1rem;
+  margin: 1rem 1rem 1rem 0;
+  width: auto;
+
+  &:hover {
+    cursor: initial;
+    * {
+      color: $green;
+    }
+    figure:after {
+      display: none;
+    }
+  }
+
+  * {
+    font-size: 1em;
+  }
+
+  figure {
+    height: 5rem;
+    width: 5rem;
   }
 }

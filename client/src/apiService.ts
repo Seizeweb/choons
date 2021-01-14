@@ -18,3 +18,8 @@ export const getListReleases = async (listId: string): Promise<ReleaseInterface[
   const { data } = await axios.get(baseUrl + '/list/' + listId);
   return data;
 };
+
+export const addReleaseToList = async (listId: string, releaseId: string): Promise<ListInterface> => {
+  const { data } = await axios.post(baseUrl + '/list/' + listId + '/' + releaseId);
+  return data;
+};

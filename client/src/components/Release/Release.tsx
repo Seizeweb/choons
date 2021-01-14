@@ -2,12 +2,14 @@ import { ReleaseInterface } from '../../interfaces';
 
 export interface ReleaseProps {
   release: ReleaseInterface;
+  isPulledRelease?: boolean;
 }
 
-const Release: React.FC<ReleaseProps> = ({ release }) => {
+const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease }) => {
   const { imageUrl, tracks, artist, title } = release;
+
   return (
-    <li className='release'>
+    <li className={isPulledRelease ? 'release pulled-release' : 'release'}>
       <figure>
         <img src={imageUrl} alt={title} />
       </figure>

@@ -109,3 +109,9 @@ body {
 section {
   margin: 2rem 0;
 }
+
+.sticky-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 6rem;
+}
