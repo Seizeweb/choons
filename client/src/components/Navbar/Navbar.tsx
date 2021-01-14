@@ -1,21 +1,23 @@
 import './Navbar.scss';
-
+import { Link } from 'react-router-dom';
 export interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
   return (
     <nav className='navbar'>
-      <h1 className='is-bold'>Choons</h1>
+      <h1 className='is-bold'>
+        <Link to='/'>Choons</Link>
+      </h1>
       <ul>
         <li>
-          <a href='' className='is-bold'>
+          <Link to='/profile' className='is-bold'>
             Lucas
-          </a>
+          </Link>
         </li>
         <li>
-          <a href='' className='btn is-bold'>
+          <Link to='/' className='btn is-bold'>
             Logout
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

@@ -1,13 +1,26 @@
 import './App.scss';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Dashboard from './containers/Dashboard/Dashboard';
+import List from './components/List/List';
+import Profile from './containers/Profile/Profile';
 
 function App() {
   return (
-    <div className='App'>
+    <Router>
       <Navbar />
-      <Dashboard />
-    </div>
+      <Switch>
+        <Route path='/list'>
+          <List />
+        </Route>
+        <Route path='/profile'>
+          <Profile />
+        </Route>
+        <Route path='/'>
+          <Dashboard />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

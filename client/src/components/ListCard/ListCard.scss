@@ -2,16 +2,11 @@
 
 .list-card {
   width: 30%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 1.5rem;
-
-  &:hover {
-    cursor: pointer;
-    * {
-      color: $yellow;
-    }
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   figure {

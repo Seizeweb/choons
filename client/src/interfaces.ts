@@ -1,4 +1,10 @@
-export interface List {
+export interface Location {
+  state: {
+    list: ListInterface;
+  };
+}
+
+export interface ListInterface {
   _id: string;
   name: string;
   releases: Release[];

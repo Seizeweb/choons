@@ -1,28 +1,29 @@
+import { Link } from 'react-router-dom';
+import { ListInterface } from '../../interfaces';
 import './ListCard.scss';
 
 export interface ListCardProps {
-  listId: string;
-  name: string;
-  lastUpdated: Date;
-  numberOfReleases: number;
-  lastReleasesArtwork: string;
+  list: ListInterface;
 }
 
-const ListCard: React.FC<ListCardProps> = ({ name, lastUpdated, numberOfReleases, lastReleasesArtwork }) => {
+const ListCard: React.FC<ListCardProps> = ({ list }) => {
+  const { lastReleasesArtwork, name, lastUpdated } = list;
   return (
     <li className='list-card'>
-      <figure>
-        {lastReleasesArtwork ? (
-          <img src={lastReleasesArtwork} alt='last release cover' />
-        ) : (
-          <img src='/assets/no-releases-artwork.png' alt='no releases' />
-        )}
-      </figure>
-      <aside className='list-infos'>
-        <h3 className='is-bold'>{name}</h3>
-        <p>{numberOfReleases} releases</p>
-        <small>Last updated on {lastUpdated}</small>
-      </aside>
+      <Link to={{ pathname: '/list', state: { list } }}>
+        <figure>
+          {lastReleasesArtwork ? (
+            <img src={lastReleasesArtwork} alt='last release cover' />
+          ) : (
+            <img src='/assets/no-releases-artwork.png' alt='no releases' />
+          )}
+        </figure>
+        <aside className='list-infos'>
+          <h3 className='is-bold'>{name}</h3>
+          <p>{list.releases.length} releases</p>
+          <small>Last updated on {lastUpdated}</small>
+        </aside>
+      </Link>
     </li>
   );
 };

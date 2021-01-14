@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Release, List } from './interfaces';
+import { Release, ListInterface } from './interfaces';
 
 const baseUrl = 'http://localhost:3001';
 
@@ -9,7 +9,7 @@ export const pullRelease = async (url: string): Promise<Release> => {
   return data;
 };
 
-export const listUserLists = async (): Promise<List[]> => {
+export const listUserLists = async (): Promise<ListInterface[]> => {
   const { data } = await axios.get(baseUrl + '/lists');
   return data;
 };
