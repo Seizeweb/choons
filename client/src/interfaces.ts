@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface Location {
   state: {
     list: ListInterface;
@@ -20,10 +22,26 @@ export interface ReleaseInterface {
   title: string;
   url: string;
   imageUrl: string;
+  bandcampId: string;
 }
 
 export interface Track {
   name: string;
   url: string;
   duration: string;
+}
+
+export interface NowPlayingDataInterface {
+  current: {
+    url: string;
+    bandcampId: string;
+    artist: string;
+    title: string;
+  };
+  next: string;
+}
+
+export interface NowPlayingInterface {
+  nowPlaying: NowPlayingDataInterface;
+  setNowPlaying: Dispatch<SetStateAction<NowPlayingDataInterface>>;
 }

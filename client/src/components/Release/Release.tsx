@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { PlayerContext } from '../../App';
 import { ReleaseInterface } from '../../interfaces';
 
 export interface ReleaseProps {
@@ -6,10 +8,22 @@ export interface ReleaseProps {
 }
 
 const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease }) => {
-  const { imageUrl, tracks, artist, title } = release;
+  const { imageUrl, tracks, artist, title, url, bandcampId } = release;
+
+  const { setNowPlaying } = useContext(PlayerContext);
+
+  const newNowPlaying = {
+    current: {
+      url,
+      artist,
+      title,
+      bandcampId,
+    },
+    next: '',
+  };
 
   return (
-    <li className={isPulledRelease ? 'release pulled-release' : 'release'}>
+    <li className={isPulledRelease ? 'release pulled-release' : 'release'} onClick={() => setNowPlaying(newNowPlaying)}>
       <figure>
         <img src={imageUrl} alt={title} />
       </figure>
