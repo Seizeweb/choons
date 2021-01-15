@@ -35,13 +35,14 @@ const listSchema = new mongoose.Schema({
 const List = mongoose.model('List', listSchema);
 
 const releaseSchema = new mongoose.Schema({
-  tracks: [],
-  artist: String,
-  title: String,
-  url: String,
-  imageUrl: String,
-  itemType: String,
-  bandcampId: String,
+  tracks: { type: [], required: [true, 'tracks is required'] },
+  artist: { type: String, required: [true, 'artist is required'] },
+  title: { type: String, required: [true, 'title is required'] },
+  url: { type: String, required: [true, 'url is required'] },
+  imageUrl: { type: String, required: [true, 'imageUrl is required'] },
+  itemType: { type: String, required: [true, 'itemType is required'] },
+  bandcampId: { type: String, required: [true, 'bandcampId is required'] },
+  bandcampAlbumId: { type: String, default: null },
 });
 
 const Release = mongoose.model('Release', releaseSchema);

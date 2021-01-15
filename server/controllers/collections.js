@@ -18,8 +18,14 @@ const pullRelease = async (ctx) => {
     const url = scrapedRelease.url;
 
     const writeReleaseProperties = (target) => {
-      target.itemType = scrapedRelease.item_type;
-      if (scrapedRelease.raw.item_type === 'track') {
+      target.itemType = scrapedRelease.raw.current.type;
+      target.artist = scrapedRelease.raw.artist;
+      target.title = scrapedRelease.title;
+      target.url = scrapedRelease.url;
+      target.imageUrl = scrapedRelease.imageUrl;
+      target.bandcampId = scrapedRelease.raw.id.toString();
+
+      if (target.itemType === 'track') {
         target.tracks = [
           {
             name: scrapedRelease.title,
@@ -27,14 +33,11 @@ const pullRelease = async (ctx) => {
             duration: new Date(scrapedRelease.raw.trackinfo[0].duration * 1000).toISOString().substr(14, 5),
           },
         ];
+        if (scrapedRelease.raw.current.album_id) target.bandcampAlbumId = scrapedRelease.raw.current.album_id.toString();
       } else {
         target.tracks = scrapedRelease.tracks;
+        target.bandcampAlbumId = target.bandcampId;
       }
-      target.artist = scrapedRelease.raw.artist;
-      target.title = scrapedRelease.title;
-      target.url = scrapedRelease.url;
-      target.imageUrl = scrapedRelease.imageUrl;
-      target.bandcampId = scrapedRelease.raw.id.toString();
     };
 
     const releaseInDb = await Release.findOne({ url });
