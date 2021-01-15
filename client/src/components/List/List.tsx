@@ -81,7 +81,7 @@ const List: React.FC<ListProps> = () => {
       </div>
       <div className='right'>
         <ul>
-          {[...releases].reverse().map((release) => (
+          {releases.map((release) => (
             <Release release={release} key={release._id} />
           ))}
         </ul>

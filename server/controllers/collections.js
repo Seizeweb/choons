@@ -65,7 +65,7 @@ const getUserLists = async (ctx) => {
 const getListReleases = async (ctx) => {
   const listId = ctx.params.id;
   const list = await List.findOne({ _id: listId }).populate('releases');
-  ctx.body = list.releases;
+  ctx.body = list.releases.reverse();
 };
 
 const deleteReleaseFromList = async (ctx) => {
@@ -107,7 +107,7 @@ const createList = async (ctx) => {
   } else {
     const list = new List({ name, owner: userId });
     await list.save();
-    ctx.body = `created list ${list.name} for user ${list.owner}`;
+    ctx.body = list;
   }
 };
 

@@ -4,4 +4,26 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 1rem;
+  align-content: center;
+
+  &::after {
+    content: '';
+    flex: auto;
+    width: 30%;
+  }
+}
+
+.add-list {
+  min-height: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  align-self: center;
+  width: 30%;
+
+  h1 {
+    font-size: 2rem;
+  }
 }

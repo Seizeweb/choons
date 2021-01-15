@@ -23,3 +23,8 @@ export const addReleaseToList = async (listId: string, releaseId: string): Promi
   const { data } = await axios.post(baseUrl + '/list/' + listId + '/' + releaseId);
   return data;
 };
+
+export const createList = async (name: string): Promise<ListInterface> => {
+  const { data } = await axios.post(baseUrl + '/new-list', { name });
+  return data;
+};

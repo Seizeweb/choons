@@ -1,4 +1,5 @@
 @import '../../utilities/colors';
+@import '../../utilities/mixins';
 
 #player-wrapper {
   position: fixed;
@@ -8,7 +9,7 @@
   z-index: 1000;
   height: 120px;
   width: 400px;
-  box-shadow: 0 0 1.5rem rgba($green, 0.7);
+  @include box-shadow;
   // box-shadow: 1rem -1rem 0 $green;
 
   iframe {

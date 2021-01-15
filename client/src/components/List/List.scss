@@ -24,13 +24,8 @@
     display: flex;
 
     input {
-      border: 3px solid $green;
-      font-family: inherit;
-      color: inherit;
       border-radius: 5px 0 0 5px;
-      height: 2.5rem;
       flex-grow: 1;
-      padding: 0 1rem;
     }
 
     button {

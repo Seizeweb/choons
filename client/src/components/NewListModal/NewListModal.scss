@@ -1,0 +1,38 @@
+@import '../../utilities/colors';
+@import '../../utilities/mixins';
+
+.modal {
+  width: 600px;
+  height: auto;
+  padding: 2rem;
+  position: fixed;
+  top: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $white;
+  text-align: center;
+  // border: 30px solid $yellow;
+  @include box-shadow;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+}
+
+.new-list {
+  form {
+    display: flex;
+    flex-direction: column;
+    label {
+      text-align: left;
+    }
+    input {
+      font-size: 2rem;
+      height: auto;
+    }
+    button {
+      align-self: center;
+      padding: 1rem 3rem;
+    }
+  }
+}
