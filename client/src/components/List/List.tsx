@@ -61,6 +61,7 @@ const List: React.FC<ListProps> = () => {
       <div className='left'>
         <div className='sticky-wrapper'>
           <h1 className='is-bold'>{list.name}</h1>
+          <h4>{list.releases.length} releases</h4>
           <form onSubmit={handleSubmit} className='mr-1'>
             <input type='text' placeholder='Add release' name='releaseUrl' onChange={handleChange} />
             <button>fetch</button>
