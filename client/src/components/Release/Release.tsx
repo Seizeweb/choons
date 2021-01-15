@@ -8,17 +8,12 @@ export interface ReleaseProps {
 }
 
 const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease }) => {
-  const { imageUrl, tracks, artist, title, url, bandcampId } = release;
+  const { imageUrl, tracks, artist, title } = release;
 
   const { setNowPlaying } = useContext(PlayerContext);
 
   const newNowPlaying = {
-    current: {
-      url,
-      artist,
-      title,
-      bandcampId,
-    },
+    current: release,
     next: '',
   };
 
@@ -33,7 +28,7 @@ const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease }) => {
           By:
           <span className='is-bold'> {artist}</span>
         </h3>
-        <small>{tracks.length} tracks</small>
+        <small>{tracks.length} tracks,</small>
       </aside>
     </li>
   );

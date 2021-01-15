@@ -34,6 +34,7 @@ const pullRelease = async (ctx) => {
       target.title = scrapedRelease.title;
       target.url = scrapedRelease.url;
       target.imageUrl = scrapedRelease.imageUrl;
+      target.bandcampId = scrapedRelease.raw.id.toString();
     };
 
     const releaseInDb = await Release.findOne({ url });

@@ -32,16 +32,11 @@ export interface Track {
 }
 
 export interface NowPlayingDataInterface {
-  current: {
-    url: string;
-    bandcampId: string;
-    artist: string;
-    title: string;
-  };
+  current: ReleaseInterface;
   next: string;
 }
 
 export interface NowPlayingInterface {
-  nowPlaying: NowPlayingDataInterface;
-  setNowPlaying: Dispatch<SetStateAction<NowPlayingDataInterface>>;
+  nowPlaying: NowPlayingDataInterface | null;
+  setNowPlaying: Dispatch<SetStateAction<NowPlayingDataInterface | null>> | Function;
 }

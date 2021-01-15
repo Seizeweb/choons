@@ -6,30 +6,22 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import List from './components/List/List';
 import Profile from './containers/Profile/Profile';
 import Player from './components/Player/Player';
-import { NowPlayingInterface } from './interfaces';
+import { NowPlayingInterface, NowPlayingDataInterface } from './interfaces';
 
-const initNowPlaying: NowPlayingInterface = {
-  nowPlaying: {
-    current: {
-      artist: '',
-      url: '',
-      bandcampId: '',
-      title: '',
-    },
-    next: '',
-  },
+const initValue: NowPlayingInterface = {
+  nowPlaying: null,
   setNowPlaying: () => {},
 };
 
-export const PlayerContext = createContext(initNowPlaying);
+export const PlayerContext = createContext(initValue);
 
 function App() {
-  const [nowPlaying, setNowPlaying] = useState(initNowPlaying.nowPlaying);
-  const value = { nowPlaying, setNowPlaying };
+  const [nowPlaying, setNowPlaying] = useState<NowPlayingDataInterface | null>(null);
+  const value: NowPlayingInterface = { nowPlaying, setNowPlaying };
 
   return (
     <PlayerContext.Provider value={value}>
-      <Player />
+      {nowPlaying && <Player nowPlaying={nowPlaying} />}
       <Router>
         <Navbar />
         <Switch>

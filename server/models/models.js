@@ -41,6 +41,7 @@ const releaseSchema = new mongoose.Schema({
   url: String,
   imageUrl: String,
   itemType: String,
+  bandcampId: String,
 });
 
 const Release = mongoose.model('Release', releaseSchema);
