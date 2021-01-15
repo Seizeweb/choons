@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ListInterface } from '../../interfaces';
+import moment from 'moment';
 import './ListCard.scss';
 
 export interface ListCardProps {
@@ -21,7 +22,7 @@ const ListCard: React.FC<ListCardProps> = ({ list }) => {
         <aside className='list-infos'>
           <h3 className='is-bold'>{name}</h3>
           <p>{list.releases.length} releases</p>
-          <small>Last updated on {lastUpdated}</small>
+          <small>Last updated on {moment(lastUpdated).format('MMM Do')}</small>
         </aside>
       </Link>
     </li>
