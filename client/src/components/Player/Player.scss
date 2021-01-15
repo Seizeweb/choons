@@ -1,14 +1,16 @@
 @import '../../utilities/colors';
 
-#player {
+#player-wrapper {
   position: fixed;
   left: 1rem;
   bottom: 1rem;
-  padding: 1rem;
-  background-color: $green;
   color: $white;
   z-index: 1000;
-  width: 30rem;
+  height: 120px;
+  width: 400px;
+  box-shadow: 0 0 1.5rem rgba($green, 0.7);
+  // box-shadow: 1rem -1rem 0 $green;
+
   iframe {
     border: 0;
     width: 100%;
