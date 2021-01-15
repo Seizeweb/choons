@@ -23,6 +23,8 @@ export interface ReleaseInterface {
   url: string;
   imageUrl: string;
   bandcampId: string;
+  bandcampAlbumId: string | null;
+  itemType: string;
 }
 
 export interface Track {

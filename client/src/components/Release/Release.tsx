@@ -28,7 +28,7 @@ const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease }) => {
           By:
           <span className='is-bold'> {artist}</span>
         </h3>
-        <small>{tracks.length} tracks,</small>
+        <small>{tracks.length} tracks</small>
       </aside>
     </li>
   );

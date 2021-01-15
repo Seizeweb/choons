@@ -15,6 +15,8 @@ const initialRelease: ReleaseInterface = {
   url: '',
   imageUrl: '',
   bandcampId: '',
+  bandcampAlbumId: '',
+  itemType: '',
 };
 
 const List: React.FC<ListProps> = () => {
