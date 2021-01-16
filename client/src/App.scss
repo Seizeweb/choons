@@ -148,6 +148,8 @@ section {
   top: 6rem;
 }
 
+// forms
+
 input {
   border: 3px solid $green;
   font-family: inherit;
@@ -158,4 +160,8 @@ input {
   &:focus {
     outline: 5px dotted $yellow;
   }
+}
+
+.field-error {
+  color: $red;
 }

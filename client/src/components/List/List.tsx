@@ -25,6 +25,7 @@ const List: React.FC<ListProps> = () => {
   const [formState, setFormState] = useState({ releaseUrl: '' });
   const [releases, setReleases] = useState<ReleaseInterface[]>([initialRelease]);
   const [pulledRelease, setPulledRelease] = useState<ReleaseInterface>(initialRelease);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchReleases = async () => {
@@ -37,13 +38,19 @@ const List: React.FC<ListProps> = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
+    setError('');
     setFormState({ releaseUrl: value });
   };
 
   const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    const release = await pullRelease(formState.releaseUrl);
-    setPulledRelease(release);
+    // basic validation, to be updated later
+    if (/https:\/\/[\S]+\.bandcamp\.com\/[\S]+\/[\S]+/g.test(formState.releaseUrl)) {
+      const release = await pullRelease(formState.releaseUrl);
+      setPulledRelease(release);
+    } else {
+      setError("Uh oh, this doesn't look like a Bandcamp link");
+    }
   };
 
   const handleAddToList = (): void => {
@@ -79,11 +86,12 @@ const List: React.FC<ListProps> = () => {
             <input type='text' placeholder='Add release' name='releaseUrl' onChange={handleChange} />
             <button>fetch</button>
           </form>
+          {error && <small className='field-error'>{error}</small>}
           {pulledRelease._id && (
             <>
               <Release release={pulledRelease} isPulledRelease={true} />
               <button className='btn pulled-release-btn' onClick={handleAddToList}>
-                That's it !
+                That's the one!
               </button>
             </>
           )}
