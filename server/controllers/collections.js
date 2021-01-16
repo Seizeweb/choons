@@ -69,9 +69,18 @@ const getListReleases = async (ctx) => {
 };
 
 const deleteReleaseFromList = async (ctx) => {
-  const listId = ctx.params.listId;
-  const releaseId = ctx.params.releaseId;
-  ctx.body = `delete release ${releaseId} from list ${listId}`;
+  const { listId, releaseId } = ctx.params;
+
+  const list = await List.findOne({ _id: listId });
+
+  list.releases = list.releases.filter((_id) => _id.toString() !== releaseId);
+
+  const newLastRelease = await Release.findOne({ _id: list.releases[list.releases.length - 1] });
+
+  list.lastReleasesArtwork = newLastRelease.imageUrl;
+
+  await list.save();
+  ctx.body = list;
 };
 
 const addReleaseToList = async (ctx) => {

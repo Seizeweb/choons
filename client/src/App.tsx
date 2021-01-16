@@ -19,11 +19,6 @@ function App() {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingDataInterface | null>(null);
   const value: NowPlayingInterface = { nowPlaying, setNowPlaying };
 
-  window.addEventListener('beforeunload', function (e) {
-    console.log('yo');
-    e.preventDefault();
-  });
-
   return (
     <PlayerContext.Provider value={value}>
       {nowPlaying && <Player nowPlaying={nowPlaying} />}

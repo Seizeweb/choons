@@ -24,6 +24,7 @@ const ListCard: React.FC<ListCardProps> = ({ list }) => {
           <p>{list.releases.length} releases</p>
           <small>Last updated on {moment(lastUpdated).format('MMM Do')}</small>
         </aside>
+        <button className='btn'>-</button>
       </Link>
     </li>
   );

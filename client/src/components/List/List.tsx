@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getListReleases, pullRelease, addReleaseToList } from '../../apiService';
+import { getListReleases, pullRelease, addReleaseToList, deleteReleaseFromList } from '../../apiService';
 import { Location, ListInterface, ReleaseInterface } from '../../interfaces';
 import Release from '../Release/Release';
 import './List.scss';
@@ -59,6 +59,16 @@ const List: React.FC<ListProps> = () => {
     }
   };
 
+  const handleDeleteTrack = (releaseId: string): void => {
+    deleteReleaseFromList(list._id, releaseId)
+      .then((newList) => {
+        setList(newList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <section className='list'>
       <div className='left'>
@@ -82,7 +92,7 @@ const List: React.FC<ListProps> = () => {
       <div className='right'>
         <ul>
           {releases.map((release) => (
-            <Release release={release} key={release._id} />
+            <Release release={release} key={release._id} deleteTrack={handleDeleteTrack} />
           ))}
         </ul>
       </div>
