@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { getListReleases, pullRelease, addReleaseToList, deleteReleaseFromList } from '../../apiService';
+import { useLocation, useHistory } from 'react-router-dom';
+import { getListReleases, pullRelease, addReleaseToList, deleteReleaseFromList, deleteList } from '../../apiService';
 import { Location, ListInterface, ReleaseInterface } from '../../interfaces';
 import Release from '../Release/Release';
 import './List.scss';
@@ -21,11 +21,14 @@ const initialRelease: ReleaseInterface = {
 
 const List: React.FC<ListProps> = () => {
   const location: Location = useLocation();
+  const history = useHistory();
+
   const [list, setList] = useState<ListInterface>(location.state.list);
   const [formState, setFormState] = useState({ releaseUrl: '' });
   const [releases, setReleases] = useState<ReleaseInterface[]>([initialRelease]);
   const [pulledRelease, setPulledRelease] = useState<ReleaseInterface>(initialRelease);
   const [error, setError] = useState('');
+  const [confirm, setConfirm] = useState(false);
 
   useEffect(() => {
     const fetchReleases = async () => {
@@ -44,7 +47,7 @@ const List: React.FC<ListProps> = () => {
 
   const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    // basic validation, to be updated later
+    // basic url validation, to be updated later (and handle https:// or not here)
     if (/https:\/\/[\S]+\.bandcamp\.com\/[\S]+\/[\S]+/g.test(formState.releaseUrl)) {
       const release = await pullRelease(formState.releaseUrl);
       setPulledRelease(release);
@@ -76,12 +79,29 @@ const List: React.FC<ListProps> = () => {
       });
   };
 
+  const handleDeleteList = (): void => {
+    if (!confirm) {
+      setConfirm(true);
+    } else {
+      deleteList(list._id)
+        .then(() => {
+          history.push('/');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return (
     <section className='list'>
       <div className='left'>
         <div className='sticky-wrapper'>
           <h1 className='is-bold'>{list.name}</h1>
-          <h4>{list.releases.length} releases</h4>
+          <div className='list-subtitle mr-1'>
+            <p>{list.releases.length} releases</p>
+            <small onClick={handleDeleteList}>{!confirm ? 'Delete list' : <strong>Are you sure ?</strong>}</small>
+          </div>
           <form onSubmit={handleSubmit} className='mr-1'>
             <input type='text' placeholder='Add release' name='releaseUrl' onChange={handleChange} />
             <button>fetch</button>

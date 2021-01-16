@@ -33,3 +33,8 @@ export const createList = async (name: string): Promise<ListInterface> => {
   const { data } = await axios.post(baseUrl + '/new-list', { name });
   return data;
 };
+
+export const deleteList = async (listId: string): Promise<ListInterface[]> => {
+  const { data } = await axios.delete(baseUrl + '/list/' + listId);
+  return data;
+};

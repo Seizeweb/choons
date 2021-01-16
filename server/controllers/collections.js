@@ -103,8 +103,11 @@ const addReleaseToList = async (ctx) => {
 };
 
 const deleteList = async (ctx) => {
+  const { userId } = ctx.request.body;
   const listId = ctx.params.id;
-  ctx.body = `delete list ${listId}`;
+  await List.deleteOne({ _id: listId });
+  const lists = await List.find({ owner: userId });
+  ctx.body = lists;
 };
 
 const createList = async (ctx) => {

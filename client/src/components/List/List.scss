@@ -16,8 +16,22 @@
     margin-bottom: 1rem;
   }
 
-  h4 {
+  .list-subtitle {
     margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-size: 1rem;
+      display: inline;
+    }
+    small {
+      font-size: 1rem;
+      color: $red;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
   }
 
   form {
