@@ -6,9 +6,10 @@ export interface PlayerProps {
     current: ReleaseInterface;
     next: string;
   };
+  closePlayer: () => void;
 }
 
-const Player: React.FC<PlayerProps> = ({ nowPlaying }) => {
+const Player: React.FC<PlayerProps> = ({ nowPlaying, closePlayer }) => {
   const { url, artist, title, bandcampId, bandcampAlbumId, itemType } = nowPlaying.current;
 
   const param1 = itemType;
@@ -25,6 +26,11 @@ const Player: React.FC<PlayerProps> = ({ nowPlaying }) => {
 
   return (
     <div id='player-wrapper'>
+      <div className='player-controls'>
+        <button className='close' onClick={closePlayer}>
+          X
+        </button>
+      </div>
       <iframe src={src} seamless title='bc-player'>
         <a href={url}>
           {title} by {artist}
