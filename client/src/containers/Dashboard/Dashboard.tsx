@@ -24,6 +24,10 @@ const Dashboard: React.FC<DashboardProps> = () => {
     setShowNewList(true);
   };
 
+  const handleCloseModal = () => {
+    setShowNewList(false);
+  };
+
   const handleListHasBeenAdded = (newList: ListInterface): void => {
     setLists([...lists, newList]);
     setShowNewList(false);
@@ -41,7 +45,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
           <h1>+</h1>
         </li>
       </ul>
-      {showNewList && <NewListModal listHasBeenAdded={handleListHasBeenAdded} />}
+      {showNewList && <NewListModal listHasBeenAdded={handleListHasBeenAdded} closeModal={handleCloseModal} />}
     </section>
   );
 };

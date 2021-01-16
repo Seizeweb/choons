@@ -53,7 +53,7 @@
   white-space: nowrap;
 
   .btn {
-    &:not(:last-of-type) {
+    &:not(:last-child) {
       margin-right: 0.5rem;
     }
   }

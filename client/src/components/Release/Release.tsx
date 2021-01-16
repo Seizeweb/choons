@@ -10,7 +10,7 @@ export interface ReleaseProps {
 }
 
 const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease, deleteTrack }) => {
-  const { imageUrl, tracks, artist, title } = release;
+  const { imageUrl, tracks, artist, title, url } = release;
 
   const { setNowPlaying } = useContext(PlayerContext);
 
@@ -31,12 +31,16 @@ const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease, deleteTrack
             By:
             <span className='is-bold'> {artist}</span>
           </h3>
-          <small>{tracks.length} tracks</small>
+          <small>
+            {tracks.length} track{tracks.length > 1 && 's'}
+          </small>
         </aside>
       </div>
       {deleteTrack && (
         <div className='release-controls'>
-          <button className='btn is-dark'>Buy</button>
+          <a className='btn is-dark' href={url} target='_blank'>
+            Buy
+          </a>
           <button className='btn is-warning' onClick={() => deleteTrack(release._id)}>
             Delete
           </button>

@@ -21,10 +21,11 @@ const ListCard: React.FC<ListCardProps> = ({ list }) => {
         </figure>
         <aside className='list-infos'>
           <h3 className='is-bold'>{name}</h3>
-          <p>{list.releases.length} releases</p>
+          <p>
+            {list.releases.length} release{list.releases.length > 1 && 's'}
+          </p>
           <small>Last updated on {moment(lastUpdated).format('MMM Do')}</small>
         </aside>
-        <button className='btn'>-</button>
       </Link>
     </li>
   );

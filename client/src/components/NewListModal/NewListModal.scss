@@ -4,14 +4,14 @@
 .modal {
   width: 600px;
   height: auto;
-  padding: 2rem;
+  padding: 4rem;
   position: fixed;
   top: 10rem;
   left: 50%;
   transform: translateX(-50%);
   background-color: $white;
   text-align: center;
-  // border: 30px solid $yellow;
+  z-index: 1000;
   @include box-shadow;
 
   h1 {
@@ -19,6 +19,15 @@
   }
 }
 
+.modal-back-overlay {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+}
 .new-list {
   form {
     display: flex;

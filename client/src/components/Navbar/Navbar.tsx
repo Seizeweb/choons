@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           </Link>
         </li>
         <li>
-          <Link to='/' className='btn is-bold'>
+          <Link to='/' className='btn'>
             Logout
           </Link>
         </li>
