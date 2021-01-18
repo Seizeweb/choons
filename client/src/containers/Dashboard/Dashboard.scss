@@ -30,12 +30,25 @@
 
   &:hover {
     @include hover-card-shadow;
-    background-color: rgba($green, $alpha: 0.15);
-    transform: translateY(-3px);
+    background-color: rgba($green, $alpha: 0.2);
     color: inherit;
   }
 
   h1 {
     font-size: 2rem;
   }
+}
+
+.dashboard-loader {
+  position: fixed;
+  top: 3.5rem;
+  left: 0;
+  width: 100vw;
+  height: 95vh;
+  background: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease-in-out 100ms;
+  transition-delay: 500ms;
 }

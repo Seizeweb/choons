@@ -60,31 +60,3 @@
     }
   }
 }
-
-.pulled-release {
-  padding-right: 1rem;
-  font-size: 1rem;
-  background: rgba($green, 0.2);
-  padding: 1rem;
-  margin: 1rem 1rem 1rem 0;
-  width: auto;
-
-  &:hover {
-    cursor: initial;
-    * {
-      color: $green;
-    }
-    figure:after {
-      display: none;
-    }
-  }
-
-  * {
-    font-size: 1em;
-  }
-
-  figure {
-    height: 5rem;
-    width: 5rem;
-  }
-}

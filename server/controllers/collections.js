@@ -77,7 +77,7 @@ const deleteReleaseFromList = async (ctx) => {
 
   const newLastRelease = await Release.findOne({ _id: list.releases[list.releases.length - 1] });
 
-  list.lastReleasesArtwork = newLastRelease.imageUrl;
+  list.lastReleasesArtwork = newLastRelease ? newLastRelease.imageUrl : null;
 
   await list.save();
   ctx.body = list;
@@ -91,7 +91,7 @@ const addReleaseToList = async (ctx) => {
 
   if (alreadyInList) {
     console.log('This release is already in the list');
-    return (ctx.body = 'This release is already in the list');
+    return (ctx.body = list);
   }
 
   list.releases = [...list.releases, releaseId];

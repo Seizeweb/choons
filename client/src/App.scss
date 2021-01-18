@@ -1,7 +1,8 @@
 // imports
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-@import './utilities/_colors.scss';
+@import './utilities/colors';
+@import './utilities/mixins';
 
 // CSS Reset
 
@@ -92,8 +93,13 @@ body {
     background-color: $green;
     color: $white;
     &:hover {
+      border-color: $white;
       background-color: $white;
       color: $green;
+      @include hover-card-shadow;
+    }
+    &:active {
+      box-shadow: none;
     }
   }
 
@@ -186,7 +192,6 @@ input {
 
 .spins {
   animation: spin 0.7s linear infinite;
-  // animation-timing-function: cubic-bezier(1, 0, 0.5, 1);
 }
 
 @keyframes spin {
@@ -202,4 +207,9 @@ input {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.hides {
+  opacity: 0;
+  pointer-events: none;
 }

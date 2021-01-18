@@ -48,9 +48,9 @@ const List: React.FC<ListProps> = () => {
 
   const handlePullRelease = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
-    setIsPulling(true);
     // basic url validation, to be updated later (and handle https:// or not here)
     if (/https:\/\/[\S]+\.bandcamp\.com\/[\S]+\/[\S]+/g.test(formState.releaseUrl)) {
+      setIsPulling(true);
       const release = await pullRelease(formState.releaseUrl);
       if (release) handleAddToList(release);
     } else {

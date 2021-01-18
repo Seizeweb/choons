@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RiAddCircleLine } from 'react-icons/ri';
+import { RiAddCircleLine, RiLoader4Line } from 'react-icons/ri';
 import { listUserLists } from '../../apiService';
 import { ListInterface } from '../../interfaces';
 import ListCard from '../../components/ListCard/ListCard';
@@ -11,11 +11,13 @@ export interface DashboardProps {}
 const Dashboard: React.FC<DashboardProps> = () => {
   const [lists, setLists] = useState<ListInterface[]>([]);
   const [showNewList, setShowNewList] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchLists = async () => {
       const fetchedLists = await listUserLists();
       setLists(fetchedLists);
+      setIsLoading(false);
     };
 
     fetchLists();
@@ -36,6 +38,9 @@ const Dashboard: React.FC<DashboardProps> = () => {
 
   return (
     <section>
+      <div className={isLoading ? 'dashboard-loader' : 'dashboard-loader hides'}>
+        <RiLoader4Line className='spins' size={64} />
+      </div>
       <h2>Wishlists</h2>
       <ul className='list-cards-wrapper'>
         {lists.map((list) => (
