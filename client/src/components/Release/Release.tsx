@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { PlayerContext } from '../../App';
 import { ReleaseInterface } from '../../interfaces';
+import { RiDeleteBin2Line } from 'react-icons/ri';
 import './Release.scss';
 
 export interface ReleaseProps {
@@ -38,11 +39,11 @@ const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease, deleteTrack
       </div>
       {deleteTrack && (
         <div className='release-controls'>
-          <a className='btn is-dark' href={url} target='_blank'>
+          <a className='btn is-dark' href={url} target='_blank' rel='noreferrer'>
             Buy
           </a>
-          <button className='btn is-warning is-not-outlined' onClick={() => deleteTrack(release._id)}>
-            Delete
+          <button className='btn is-warning is-not-outlined is-icon-wraper' onClick={() => deleteTrack(release._id)}>
+            <RiDeleteBin2Line size={24} />
           </button>
         </div>
       )}

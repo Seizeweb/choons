@@ -51,6 +51,8 @@
 
 .release-controls {
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 
   .btn {
     &:not(:last-child) {
