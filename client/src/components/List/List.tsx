@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { getListReleases, pullRelease, addReleaseToList, deleteReleaseFromList, deleteList } from '../../apiService';
+import { RiDownload2Line, RiLoader4Line } from 'react-icons/ri';
 import { Location, ListInterface, ReleaseInterface } from '../../interfaces';
 import Release from '../Release/Release';
 import './List.scss';
@@ -26,9 +27,9 @@ const List: React.FC<ListProps> = () => {
   const [list, setList] = useState<ListInterface>(location.state.list);
   const [formState, setFormState] = useState({ releaseUrl: '' });
   const [releases, setReleases] = useState<ReleaseInterface[]>([initialRelease]);
-  const [pulledRelease, setPulledRelease] = useState<ReleaseInterface>(initialRelease);
   const [error, setError] = useState('');
   const [confirm, setConfirm] = useState(false);
+  const [isPulling, setIsPulling] = useState(false);
 
   useEffect(() => {
     const fetchReleases = async () => {
@@ -45,28 +46,28 @@ const List: React.FC<ListProps> = () => {
     setFormState({ releaseUrl: value });
   };
 
-  const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
+  const handlePullRelease = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
+    setIsPulling(true);
     // basic url validation, to be updated later (and handle https:// or not here)
     if (/https:\/\/[\S]+\.bandcamp\.com\/[\S]+\/[\S]+/g.test(formState.releaseUrl)) {
       const release = await pullRelease(formState.releaseUrl);
-      setPulledRelease(release);
+      if (release) handleAddToList(release);
     } else {
       setError("Uh oh, this doesn't look like a Bandcamp link");
     }
   };
 
-  const handleAddToList = (): void => {
-    if (pulledRelease) {
-      addReleaseToList(list._id, pulledRelease._id)
-        .then((newList) => {
-          setPulledRelease(initialRelease);
-          setList(newList);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+  const handleAddToList = (release: ReleaseInterface): void => {
+    addReleaseToList(list._id, release._id)
+      .then((newList) => {
+        setList(newList);
+        setFormState({ releaseUrl: '' });
+        setIsPulling(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleDeleteTrack = (releaseId: string): void => {
@@ -121,19 +122,11 @@ const List: React.FC<ListProps> = () => {
               {!confirm ? 'Delete list' : <strong>Are you sure ?</strong>}
             </small>
           </div>
-          <form onSubmit={handleSubmit} className='mr-1'>
-            <input type='text' placeholder='Add release' name='releaseUrl' onChange={handleChange} />
-            <button>fetch</button>
+          <form onSubmit={handlePullRelease} className='mr-1'>
+            <input type='text' placeholder='Add release' name='releaseUrl' onChange={handleChange} value={formState.releaseUrl} />
+            <button className='btn'>{isPulling ? <RiLoader4Line className='spins' size={20} /> : <RiDownload2Line size={20} />}</button>
           </form>
           {error && <small className='field-error'>{error}</small>}
-          {pulledRelease._id && (
-            <>
-              <Release release={pulledRelease} isPulledRelease={true} />
-              <button className='btn pulled-release-btn' onClick={handleAddToList}>
-                That's the one!
-              </button>
-            </>
-          )}
         </div>
       </div>
       <div className='right'>

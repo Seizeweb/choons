@@ -181,3 +181,25 @@ input {
 .field-error {
   color: $red;
 }
+
+// animations
+
+.spins {
+  animation: spin 0.7s linear infinite;
+  // animation-timing-function: cubic-bezier(1, 0, 0.5, 1);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(90deg);
+  }
+  60% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

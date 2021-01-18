@@ -39,6 +39,7 @@
 
     input {
       border-radius: 5px 0 0 5px;
+      border-width: 3px 0 3px 3px;
       flex-grow: 1;
     }
 
@@ -47,7 +48,6 @@
       border-radius: 0 5px 5px 0;
       background: $green;
       color: #fff;
-      padding: 0.5rem 1rem;
     }
   }
 }
