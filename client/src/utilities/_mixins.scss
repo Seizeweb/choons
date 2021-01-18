@@ -1,3 +1,7 @@
 @mixin box-shadow {
   box-shadow: 0 0 1.5rem rgba($green, 0.7);
 }
+
+@mixin hover-card-shadow {
+  box-shadow: 0 5px 1rem rgba($green, 0.3), 0 2px 0.2rem rgba($green, 0.5);
+}

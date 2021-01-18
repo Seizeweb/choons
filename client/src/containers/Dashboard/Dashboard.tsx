@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { RiAddCircleLine } from 'react-icons/ri';
 import { listUserLists } from '../../apiService';
 import { ListInterface } from '../../interfaces';
 import ListCard from '../../components/ListCard/ListCard';
@@ -41,8 +42,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
           <ListCard list={list} key={list._id} />
         ))}
         <li className='btn add-list list-card' onClick={showNewListModal}>
-          <p>Add list</p>
-          <h1>+</h1>
+          <RiAddCircleLine size={32} />
         </li>
       </ul>
       {showNewList && <NewListModal listHasBeenAdded={handleListHasBeenAdded} closeModal={handleCloseModal} />}

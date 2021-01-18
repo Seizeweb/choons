@@ -1,4 +1,5 @@
 @import '../../utilities/colors';
+@import '../../utilities/mixins';
 
 .list-cards-wrapper {
   width: 100%;
@@ -26,6 +27,13 @@
   width: 30%;
   border: none;
   background: rgba($green, $alpha: 0.1);
+
+  &:hover {
+    @include hover-card-shadow;
+    background-color: rgba($green, $alpha: 0.15);
+    transform: translateY(-3px);
+    color: inherit;
+  }
 
   h1 {
     font-size: 2rem;
