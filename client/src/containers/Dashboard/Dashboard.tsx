@@ -40,7 +40,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
         {lists.map((list) => (
           <ListCard list={list} key={list._id} />
         ))}
-        <li className='add-list btn list-card' onClick={showNewListModal}>
+        <li className='btn add-list list-card' onClick={showNewListModal}>
           <p>Add list</p>
           <h1>+</h1>
         </li>

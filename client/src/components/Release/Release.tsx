@@ -41,7 +41,7 @@ const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease, deleteTrack
           <a className='btn is-dark' href={url} target='_blank'>
             Buy
           </a>
-          <button className='btn is-warning' onClick={() => deleteTrack(release._id)}>
+          <button className='btn is-warning is-not-outlined' onClick={() => deleteTrack(release._id)}>
             Delete
           </button>
         </div>

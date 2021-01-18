@@ -105,6 +105,14 @@ body {
       color: $white;
     }
   }
+
+  &.is-not-outlined {
+    border-color: rgba($white, 0);
+    &:hover {
+      color: $red;
+      background-color: rgba($red, 0.1);
+    }
+  }
 }
 
 .is-regular {
