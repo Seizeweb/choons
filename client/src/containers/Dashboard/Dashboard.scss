@@ -7,11 +7,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 1rem;
-  align-content: center;
+  align-items: center;
 
   &::after {
     content: '';
-    flex: auto;
+    flex: 0 1 30%;
     width: 30%;
   }
 }
