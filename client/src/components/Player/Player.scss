@@ -9,7 +9,7 @@
   z-index: 1000;
   height: 120px;
   width: 400px;
-  @include box-shadow;
+  @include hover-card-shadow;
   // box-shadow: 1rem -1rem 0 $green;
 
   iframe {
@@ -22,10 +22,18 @@
     position: absolute;
     left: 100%;
     top: 0;
-    button {
-      color: $white;
-      background: $green;
-      padding: 0.5rem 1rem;
+    .close {
+      color: $green;
+      background: $white;
+      border: none;
+      padding: 0;
+      width: 40px;
+      margin-left: 5px;
+      @include hover-card-shadow;
+      &:hover {
+        color: $white;
+        background: $green;
+      }
     }
   }
 }

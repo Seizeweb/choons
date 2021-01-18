@@ -1,4 +1,5 @@
 import { ReleaseInterface } from '../../interfaces';
+import { RiCloseLine } from 'react-icons/ri';
 import './Player.scss';
 
 export interface PlayerProps {
@@ -27,8 +28,8 @@ const Player: React.FC<PlayerProps> = ({ nowPlaying, closePlayer }) => {
   return (
     <div id='player-wrapper'>
       <div className='player-controls'>
-        <button className='close' onClick={closePlayer}>
-          X
+        <button className='btn is-icon-wrapper close' onClick={closePlayer}>
+          <RiCloseLine size={24} />
         </button>
       </div>
       <iframe src={src} seamless title='bc-player'>

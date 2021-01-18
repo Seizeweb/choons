@@ -42,7 +42,7 @@ const Release: React.FC<ReleaseProps> = ({ release, isPulledRelease, deleteTrack
           <a className='btn is-dark' href={url} target='_blank' rel='noreferrer'>
             Buy
           </a>
-          <button className='btn is-warning is-not-outlined is-icon-wraper' onClick={() => deleteTrack(release._id)}>
+          <button className='btn is-warning is-not-outlined is-icon-wrapper' onClick={() => deleteTrack(release._id)}>
             <RiDeleteBin2Line size={24} />
           </button>
         </div>

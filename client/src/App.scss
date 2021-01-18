@@ -114,11 +114,12 @@ body {
     }
   }
 
-  &.is-icon-wraper {
+  &.is-icon-wrapper {
     padding: 0 1rem;
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 }
 
