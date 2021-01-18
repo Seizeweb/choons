@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { getListReleases, pullRelease, addReleaseToList, deleteReleaseFromList, deleteList } from '../../apiService';
 import { Location, ListInterface, ReleaseInterface } from '../../interfaces';
@@ -93,6 +93,23 @@ const List: React.FC<ListProps> = () => {
     }
   };
 
+  const useCloseOnOutsideClick = (ref: React.MutableRefObject<HTMLDivElement | null>): void => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node) && confirm) setConfirm(false);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    useEffect(() => {
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    });
+  };
+
+  const wrapperRef = useRef(null);
+  useCloseOnOutsideClick(wrapperRef);
+
   return (
     <section className='list'>
       <div className='left'>
@@ -100,7 +117,9 @@ const List: React.FC<ListProps> = () => {
           <h1 className='is-bold'>{list.name}</h1>
           <div className='list-subtitle mr-1'>
             <p>{list.releases.length} releases</p>
-            <small onClick={handleDeleteList}>{!confirm ? 'Delete list' : <strong>Are you sure ?</strong>}</small>
+            <small onClick={handleDeleteList} ref={wrapperRef}>
+              {!confirm ? 'Delete list' : <strong>Are you sure ?</strong>}
+            </small>
           </div>
           <form onSubmit={handleSubmit} className='mr-1'>
             <input type='text' placeholder='Add release' name='releaseUrl' onChange={handleChange} />
