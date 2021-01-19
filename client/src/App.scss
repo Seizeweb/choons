@@ -85,7 +85,7 @@ body {
   }
 
   &:focus {
-    outline: 3px dotted $yellow;
+    outline: 1px dotted $yellow;
   }
 
   &.is-dark {
@@ -180,7 +180,7 @@ input {
   border-radius: 5px;
   padding: 0.5rem 1rem;
   &:focus {
-    outline: 5px dotted $yellow;
+    outline: 2px dotted $yellow;
   }
 }
 

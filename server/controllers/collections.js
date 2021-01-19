@@ -112,9 +112,10 @@ const deleteList = async (ctx) => {
 
 const createList = async (ctx) => {
   const { name, userId } = ctx.request.body;
-  const existingList = await List.findOne({ name });
+  const existingList = await List.findOne({ name, _id: userId });
 
   if (existingList) {
+    ctx.status = 400;
     ctx.body = `You already created a list with the name ${existingList.name}`;
   } else {
     const list = new List({ name, owner: userId });

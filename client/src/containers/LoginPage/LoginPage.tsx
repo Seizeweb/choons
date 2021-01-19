@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { login } from '../../apiService';
+import { Link } from 'react-router-dom';
 
 export interface LoginPageProps {
   onAuthenticate: (username: string) => void;
@@ -15,13 +16,18 @@ const LoginPage: React.FC<LoginPageProps> = ({ onAuthenticate }) => {
     onAuthenticate(username);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor='email'>Email</label>
-      <input type='text' name='email' onChange={(e) => setEmail(e.target.value)} />
-      <label htmlFor='password'>Password</label>
-      <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
-      <button className='btn'>Login</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='email'>Email</label>
+        <input type='text' name='email' onChange={(e) => setEmail(e.target.value)} />
+        <label htmlFor='password'>Password</label>
+        <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
+        <button className='btn'>Login</button>
+      </form>
+      <p>
+        First time here ? <Link to='/register'>Register</Link>
+      </p>
+    </>
   );
 };
 

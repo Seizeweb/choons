@@ -1,4 +1,4 @@
-const { User, List } = require('../models/models.js');
+const { User } = require('../models/models.js');
 const { registerValidation, loginValidation } = require('../validation');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -28,6 +28,7 @@ const createUser = async (ctx) => {
     await user.save();
     ctx.body = user._id;
   } catch (error) {
+    console.log(error);
     ctx.status = 400;
     ctx.body = error;
   }

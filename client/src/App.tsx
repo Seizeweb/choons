@@ -3,6 +3,7 @@ import './App.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Dashboard from './containers/Dashboard/Dashboard';
+import RegisterPage from './containers/RegisterPage/RegisterPage';
 import List from './components/List/List';
 import Profile from './containers/Profile/Profile';
 import Player from './components/Player/Player';
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route path='/profile'>
             <Profile />
+          </Route>
+          <Route path='/register'>
+            <RegisterPage />
           </Route>
           <Route path='/'>{isAuthenticated ? <Dashboard /> : <LoginPage onAuthenticate={handleAuthenticate} />}</Route>
         </Switch>

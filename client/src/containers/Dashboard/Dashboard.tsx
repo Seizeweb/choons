@@ -22,6 +22,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
   }, []);
 
   const handleListHasBeenAdded = (newList: ListInterface): void => {
+    console.log(newList);
     setLists([...lists, newList]);
     setShowNewList(false);
   };
@@ -33,9 +34,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
       </div>
       <h2>Wishlists</h2>
       <ul className='list-cards-wrapper'>
-        {lists.map((list) => (
-          <ListCard list={list} key={list._id} />
-        ))}
+        {!!lists.length && lists.map((list) => <ListCard list={list} key={list._id} />)}
         <li className='btn add-list list-card' onClick={() => setShowNewList(true)}>
           <RiAddCircleLine size={32} />
         </li>

@@ -84,3 +84,12 @@ export const getUser = async (): Promise<UserInterface> => {
   });
   return data;
 };
+
+export const register = async (username: string, email: string, password: string): Promise<string> => {
+  const { data } = await axios.post(baseUrl + '/register', {
+    username,
+    email,
+    password,
+  });
+  return data;
+};
