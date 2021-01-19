@@ -17,16 +17,19 @@ const LoginPage: React.FC<LoginPageProps> = ({ onAuthenticate }) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='user-form'>
         <label htmlFor='email'>Email</label>
         <input type='text' name='email' onChange={(e) => setEmail(e.target.value)} />
         <label htmlFor='password'>Password</label>
-        <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
-        <button className='btn'>Login</button>
+        <input type='password' name='password' className='mb-1' onChange={(e) => setPassword(e.target.value)} />
+        <button className='btn is-dark'>Login</button>
+        <p>
+          First time here ?{' '}
+          <Link to='/register' className='is-underlined'>
+            Register
+          </Link>
+        </p>
       </form>
-      <p>
-        First time here ? <Link to='/register'>Register</Link>
-      </p>
     </>
   );
 };

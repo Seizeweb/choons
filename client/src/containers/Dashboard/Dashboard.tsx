@@ -22,7 +22,6 @@ const Dashboard: React.FC<DashboardProps> = () => {
   }, []);
 
   const handleListHasBeenAdded = (newList: ListInterface): void => {
-    console.log(newList);
     setLists([...lists, newList]);
     setShowNewList(false);
   };

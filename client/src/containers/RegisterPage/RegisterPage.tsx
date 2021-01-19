@@ -26,7 +26,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='user-form'>
       <label htmlFor='email'>Email</label>
       <input type='text' name='email' onChange={(e) => setFormState({ ...formState, email: e.target.value })} />
 
@@ -39,7 +39,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
       <label htmlFor='password2'>Re-type password</label>
       <input type='password' name='password2' onChange={(e) => setFormState({ ...formState, password2: e.target.value })} />
 
-      <button className='btn'>Login</button>
+      <button className='btn is-dark'>Register</button>
       {error && <p className='field-error'>{error}</p>}
     </form>
   );
