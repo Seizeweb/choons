@@ -1,11 +1,24 @@
-const authMiddleware = async (ctx, next) => {
-  // const isAuthenticated = true;
-  // 'Lucas' userId
-  const userId = '600000e4bf02ed0830738486';
-  // const userId = ctx.req.userId; // TODO: make this to a JWT later
-  ctx.request.body.userId = userId;
+const jwt = require('jsonwebtoken');
 
-  if (userId) await next();
+const authMiddleware = async (ctx, next) => {
+  const token = ctx.get('auth-token');
+  if (!token) {
+    ctx.status = 401;
+    return (ctx.body = 'Access denied');
+  }
+
+  try {
+    const verified = jwt.verify(token, 'qjelcotksqlrkqbbctT');
+
+    if (verified._id) {
+      ctx.request.body.userId = verified._id;
+      await next();
+    }
+  } catch (error) {
+    console.log(error);
+    ctx.status = 400;
+    return (ctx.body = 'Invalid token');
+  }
 };
 
 module.exports = { authMiddleware };

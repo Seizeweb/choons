@@ -12,9 +12,24 @@ db.once('open', function () {
 });
 
 const userSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: String,
+  username: {
+    type: String,
+    required: true,
+    min: 6,
+    max: 255,
+  },
+  email: {
+    type: String,
+    required: true,
+    min: 6,
+    max: 255,
+  },
+  password: {
+    type: String,
+    required: true,
+    min: 6,
+    max: 1024,
+  },
 });
 
 const User = mongoose.model('User', userSchema);
