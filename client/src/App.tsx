@@ -19,13 +19,9 @@ function App() {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingDataInterface | null>(null);
   const value: NowPlayingInterface = { nowPlaying, setNowPlaying };
 
-  const handleClosePlayer = () => {
-    setNowPlaying(null);
-  };
-
   return (
     <PlayerContext.Provider value={value}>
-      {nowPlaying && <Player nowPlaying={nowPlaying} closePlayer={handleClosePlayer} />}
+      {nowPlaying && <Player nowPlaying={nowPlaying} closePlayer={() => setNowPlaying(null)} />}
       <Router>
         <Navbar />
         <Switch>

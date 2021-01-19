@@ -6,8 +6,6 @@ import { Location, ListInterface, ReleaseInterface } from '../../interfaces';
 import Release from '../Release/Release';
 import './List.scss';
 
-export interface ListProps {}
-
 const initialRelease: ReleaseInterface = {
   _id: '',
   tracks: [],
@@ -20,7 +18,7 @@ const initialRelease: ReleaseInterface = {
   itemType: '',
 };
 
-const List: React.FC<ListProps> = () => {
+const List: React.FC = () => {
   const location: Location = useLocation();
   const history = useHistory();
 
@@ -32,12 +30,12 @@ const List: React.FC<ListProps> = () => {
   const [isPulling, setIsPulling] = useState(false);
 
   useEffect(() => {
-    const fetchReleases = async () => {
+    (async () => {
       const fetchedReleases = await getListReleases(list._id);
       setReleases(fetchedReleases);
-    };
+    })();
 
-    fetchReleases();
+    // fetchReleases();
   }, [list]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

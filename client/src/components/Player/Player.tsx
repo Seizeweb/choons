@@ -20,10 +20,6 @@ const Player: React.FC<PlayerProps> = ({ nowPlaying, closePlayer }) => {
     setIsLoading(true);
   }, [nowPlaying]);
 
-  const handlePlayerHasLoaded = () => {
-    setIsLoading(false);
-  };
-
   const param1 = itemType;
   const param2 = bandcampAlbumId && bandcampAlbumId !== bandcampId ? `=${bandcampAlbumId}/` : `=${bandcampId}/`;
   const param3 = bandcampAlbumId && bandcampAlbumId !== bandcampId && `track=${bandcampId}/`;
@@ -46,7 +42,7 @@ const Player: React.FC<PlayerProps> = ({ nowPlaying, closePlayer }) => {
           <RiCloseLine size={24} />
         </button>
       </div>
-      <iframe src={src} seamless title='bc-player' id='bc-player' onLoad={handlePlayerHasLoaded}>
+      <iframe src={src} seamless title='bc-player' id='bc-player' onLoad={() => setIsLoading(false)}>
         <a href={url}>
           {title} by {artist}
         </a>

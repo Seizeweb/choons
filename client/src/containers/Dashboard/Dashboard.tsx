@@ -14,22 +14,12 @@ const Dashboard: React.FC<DashboardProps> = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchLists = async () => {
+    (async () => {
       const fetchedLists = await listUserLists();
       setLists(fetchedLists);
       setIsLoading(false);
-    };
-
-    fetchLists();
+    })();
   }, []);
-
-  const showNewListModal = () => {
-    setShowNewList(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowNewList(false);
-  };
 
   const handleListHasBeenAdded = (newList: ListInterface): void => {
     setLists([...lists, newList]);
@@ -46,11 +36,11 @@ const Dashboard: React.FC<DashboardProps> = () => {
         {lists.map((list) => (
           <ListCard list={list} key={list._id} />
         ))}
-        <li className='btn add-list list-card' onClick={showNewListModal}>
+        <li className='btn add-list list-card' onClick={() => setShowNewList(true)}>
           <RiAddCircleLine size={32} />
         </li>
       </ul>
-      {showNewList && <NewListModal listHasBeenAdded={handleListHasBeenAdded} closeModal={handleCloseModal} />}
+      {showNewList && <NewListModal listHasBeenAdded={handleListHasBeenAdded} closeModal={() => setShowNewList(false)} />}
     </section>
   );
 };

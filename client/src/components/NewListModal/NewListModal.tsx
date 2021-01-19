@@ -17,11 +17,6 @@ const NewListModal: React.FC<NewListModalProps> = ({ listHasBeenAdded, closeModa
     listHasBeenAdded(newList);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value } = e.target;
-    setName(value);
-  };
-
   return (
     <>
       <div className='modal-back-overlay' onClick={closeModal}></div>
@@ -29,7 +24,7 @@ const NewListModal: React.FC<NewListModalProps> = ({ listHasBeenAdded, closeModa
         <h2>Create new list</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor='name'>Name</label>
-          <input type='text' name='name' onChange={handleChange} />
+          <input type='text' name='name' onChange={(e) => setName(e.target.value)} />
           <button className='btn is-dark mt-1'>Create</button>
         </form>
       </div>
