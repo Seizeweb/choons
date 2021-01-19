@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const authMiddleware = async (ctx, next) => {
   const token = ctx.get('auth-token');
+
   if (!token) {
     ctx.status = 401;
     return (ctx.body = 'Access denied');

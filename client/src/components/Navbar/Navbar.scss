@@ -18,6 +18,8 @@ nav {
 
     li {
       font-size: 1rem;
+      display: flex;
+      align-items: center;
       &:not(:last-of-type) {
         margin-right: 2rem;
       }

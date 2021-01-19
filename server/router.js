@@ -13,7 +13,7 @@ const Router = require('@koa/router');
 
 const router = new Router();
 
-router.get('/release/:releaseUrl', pullRelease);
+router.get('/release/:releaseUrl', authMiddleware, pullRelease);
 router.get('/lists', authMiddleware, getUserLists);
 router.get('/list/:id', authMiddleware, getListReleases);
 router.put('/list/:listId/:releaseId', authMiddleware, deleteReleaseFromList);
@@ -25,6 +25,6 @@ router.post('/login', login);
 router.post('/register', createUser);
 router.get('/profile', authMiddleware, profile);
 router.post('/logout', authMiddleware, logout);
-router.post('/delete', authMiddleware, deleteUser);
+router.delete('/deleteaccount', authMiddleware, deleteUser);
 
 module.exports = router;

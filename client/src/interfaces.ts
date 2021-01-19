@@ -42,3 +42,9 @@ export interface NowPlayingInterface {
   nowPlaying: NowPlayingDataInterface | null;
   setNowPlaying: Dispatch<SetStateAction<NowPlayingDataInterface | null>> | Function;
 }
+
+export interface UserInterface {
+  email: string;
+  username: string;
+  token: string;
+}
