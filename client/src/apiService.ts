@@ -38,7 +38,7 @@ export const addReleaseToList = async (listId: string, releaseId: string): Promi
 
 export const deleteReleaseFromList = async (listId: string, releaseId: string): Promise<ListInterface> => {
   const token = localStorage.getItem('token');
-  const { data } = await axios.put(baseUrl + '/list/' + listId + '/' + releaseId, {
+  const { data } = await axios.put(baseUrl + '/list/' + listId + '/' + releaseId, null, {
     headers: { 'auth-token': token },
   });
   return data;
