@@ -35,6 +35,7 @@ function App() {
     await logout();
     setIsAuthenticated(false);
     setUsername('');
+    window.location.href = '/';
   };
 
   useEffect(() => {
