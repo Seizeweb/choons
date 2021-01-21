@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/choons', {
+
+const database = process.env.DATABASE;
+
+mongoose.connect(database, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

@@ -69,7 +69,7 @@ const login = async (ctx) => {
     return (ctx.body = 'Email or password seems to be wrong');
   }
 
-  const token = jwt.sign({ _id: user._id }, 'qjelcotksqlrkqbbctT');
+  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   ctx.set('auth-token', token);
   ctx.body = { username: user.username, email: user.email, token };
 };

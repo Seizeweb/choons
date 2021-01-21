@@ -9,7 +9,7 @@ const authMiddleware = async (ctx, next) => {
   }
 
   try {
-    const verified = jwt.verify(token, 'qjelcotksqlrkqbbctT');
+    const verified = jwt.verify(token, process.env.TOKEN_SECRET);
 
     if (verified._id) {
       ctx.request.body.userId = verified._id;

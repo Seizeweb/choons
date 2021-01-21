@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const port = process.env.PORT;
+
 const Koa = require('koa');
 const cors = require('@koa/cors');
 const router = require('./router');
@@ -10,6 +14,6 @@ app.use(cors());
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3001, () => {
+app.listen(port, () => {
   console.log('server is running');
 });
