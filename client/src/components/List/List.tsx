@@ -64,7 +64,7 @@ const List: React.FC = () => {
         setIsPulling(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   };
 
@@ -74,7 +74,7 @@ const List: React.FC = () => {
         setList(newList);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   };
 
@@ -87,7 +87,7 @@ const List: React.FC = () => {
           history.push('/');
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     }
   };

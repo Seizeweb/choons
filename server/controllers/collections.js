@@ -98,7 +98,6 @@ const addReleaseToList = async (ctx) => {
   const release = await Release.findOne({ _id: releaseId });
   list.lastReleasesArtwork = release.imageUrl;
   await list.save();
-  console.log(list);
   ctx.body = list;
 };
 

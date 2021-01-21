@@ -28,7 +28,6 @@ const createUser = async (ctx) => {
     await user.save();
     ctx.body = user._id;
   } catch (error) {
-    console.log(error);
     ctx.status = 400;
     ctx.body = error;
   }

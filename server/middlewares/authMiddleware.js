@@ -16,7 +16,6 @@ const authMiddleware = async (ctx, next) => {
       await next();
     }
   } catch (error) {
-    console.log(error);
     ctx.status = 400;
     return (ctx.body = 'Invalid token');
   }
