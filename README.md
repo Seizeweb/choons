@@ -3,7 +3,7 @@
 ### Choons
 A Bandcamp wishtlist manager
 
-## Run
+## Getting Started
 - Fork the repo and clone it on your local machine.
 - Install the dependencies separately by running `npm i` in both directories (client and server)
 - Run the server using `nodemon index.js` in the server directory
