@@ -3,6 +3,8 @@
 ### Choons
 A Bandcamp wishtlist manager
 
+![Choons UI](/choons-ui.gif)
+
 ## Getting Started
 - Fork the repo and clone it on your local machine.
 - Install the dependencies separately by running `npm i` in both directories (client and server)
